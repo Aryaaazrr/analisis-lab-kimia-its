@@ -34,9 +34,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        // $jenis_customer = JenisCustomer::all();
         $jenis_customer = ['Internal Kimia', 'Internal ITS', 'Umum'];
-        // dd($jenis_customer);
         return view('auth.register', compact('jenis_customer'));
     }
 
@@ -116,13 +114,6 @@ class AuthController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-
-        // return redirect('/email/verify');
-        // $this->sendVerificationEmail($user); // memanggil fungsi untuk mengirim email verifikasi
-
-        // Session::flash('success', 'success-reg');
-        // Session::flash('message-success', 'Daftar Akun Berhasil!');
-        // return redirect('register');
     }
 
     public function sendVerificationEmail($user)

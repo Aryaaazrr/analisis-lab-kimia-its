@@ -113,7 +113,7 @@ class LayananController extends Controller
         $jakartaTimezone = new DateTimeZone('Asia/Jakarta');
         $validator = Validator::make($request->all(), [
             'kode_transaksi' => 'required|unique:transaksi',
-            'total_biaya' => 'required|numeric|min:0|regex:/^\d+(\.\d{1,2})?$/',
+            'total_biaya' => 'required|',
             'jadwal' => 'required|date|after_or_equal:' . Carbon::today($jakartaTimezone)->format('Y-m-d'),
         ]);
 
@@ -125,6 +125,8 @@ class LayananController extends Controller
 
         $cek_keranjang = Keranjang::where('users_id', Auth::user()->id)->first();
         $layanan_sewa = Layanan::where('id', $cek_keranjang->layanan_id)->first();
+        $totalBiaya = str_replace(['Rp.', '.'], '',$request->total_biaya);
+        dd($totalBiaya);
 
         
         if ($layanan_sewa->jenis_layanan == 'Sewa') {
@@ -132,7 +134,7 @@ class LayananController extends Controller
             $transaksi = Transaksi::create([
                 'kode_transaksi' => $request->kode_transaksi,
                 'users_id' => $cek_keranjang->users_id,
-                'grand_total_transaksi' => $request->total_biaya,
+                'grand_total_transaksi' => $totalBiaya,
                 'catatan' => $request->catatan,
                 'start_at' => $request->jadwal
             ]);
@@ -143,7 +145,7 @@ class LayananController extends Controller
                 'transaksi_id' => $idTransaksi,
                 'layanan_id' => $cek_keranjang->layanan_id,
                 'jumlah' => $request->jumlah_sampel,
-                'subtotal' => $request->total_biaya,
+                'subtotal' => $totalBiaya,
             ]);
             
             if ($transaksi && $detail_transaksi) {
@@ -176,7 +178,7 @@ class LayananController extends Controller
             $transaksi = Transaksi::create([
                 'kode_transaksi' => $request->kode_transaksi,
                 'users_id' => $cek_keranjang->users_id,
-                'grand_total_transaksi' => $request->total_biaya,
+                'grand_total_transaksi' => $totalBiaya,
                 'catatan' => $request->catatan,
                 'start_at' => $request->jadwal
             ]);
@@ -193,7 +195,7 @@ class LayananController extends Controller
                     'jenis_sampel' => $sampel['jenis_sampel'],
                     'wujud_sampel' => $sampel['wujud_sampel'],
                     'jumlah' => $sampel['jumlah'],
-                    'subtotal' => $request->total_biaya,
+                    'subtotal' => $totalBiaya,
                 ]);
             }
 

@@ -40,12 +40,12 @@
         {{-- @csrf --}}
         <div class=" p-6 mt-4 rounded-lg h-auto bg-slate-50" id="form">
             <div class="flex justify-between self-center">
-                <div class="flex font-medium text-xl items-center">
+                <div class="flex text-base font-medium md:font-medium md:text-xl items-center">
                     {{ __('Daftar Sampel') }}
                 </div>
                 <div class="flex justify-center">
                     <button wire:click="add()" type="button"
-                        class="p-2 text-sm flex items-center rounded-lg bg-blue-200 text-blue-800 border border-blue-800"
+                        class="p-2 text-xs md:text-sm flex items-center rounded-lg bg-blue-200 text-blue-800 border border-blue-800"
                         id="tambah-entri">
                         <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
                             aria-hidden="true" class="w-6">
@@ -133,8 +133,8 @@
                     </button>
                 </div>
                 <div class="flex mb-4 flex-col rounded-md">
-                    <div class="flex justify-evenly flex-row w-full">
-                        <div class="flex mt-4 mr-2 w-full flex-col">
+                    <div class="flex justify-evenly flex-col md:flex-row w-full">
+                        <div class="flex mt-4 md:mr-2 w-full flex-col">
                             {{-- <input type="text" value="{{ $pilihanLayanan }}" wire:model="sampel.{{ $index }}.layanan_id"> --}}
                             <label for="nama_sampel"
                                 class="mb-2 text-sm text-gray-900 @error('sampel.' . $index . '.nama_sampel') text-red-500 text-sm @enderror">Nama
@@ -148,7 +148,7 @@
                                 <span class="pt-2 text-xs text-red-600 ">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="flex mt-4 ml-2 items-start w-full flex-col">
+                        <div class="flex mt-4 md:ml-2 items-start w-full flex-col">
                             <label for="jumlah"
                                 class="mb-2 text-sm text-gray-900 @error('sampel.' . $index . '.jumlah') text-red-500 text-sm @enderror">Jumlah</label>
                             <input wire:model="sampel.{{ $index }}.jumlah"
@@ -161,8 +161,8 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="flex justify-evenly flex-row w-full">
-                        <div class="flex mt-4 mr-2 items-start w-full flex-col">
+                    <div class="flex justify-evenly flex-col md:flex-row w-full">
+                        <div class="flex mt-4 md:mr-2 items-start w-full flex-col">
                             <label for="jenis_sampel"
                                 class="mb-2 text-sm text-gray-900 @error('sampel.' . $index . '.jenis_sampel') text-red-500 text-sm @enderror">Jenis
                                 Sampel</label>
@@ -179,7 +179,7 @@
                                 <span class="pt-2 text-xs text-red-600 ">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="flex mt-4 ml-2 items-start w-full flex-col">
+                        <div class="flex mt-4 md:ml-2 items-start w-full flex-col">
                             <label for="wujud_sampel"
                                 class="mb-2 text-sm text-gray-900 @error('sampel.' . $index . '.wujud_sampel') text-red-500 text-sm @enderror">Wujud
                                 Sampel</label>
@@ -203,7 +203,7 @@
 
         <div class="flex my-4 justify-between bg-slate-50 p-4 rounded-lg">
             <a href="{{ route('layanan') }}"
-                class="text-blue-700 bg-transparent mr-2 border-2 border-blue-700  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                class="text-blue-700 bg-transparent mr-2 border-2 border-blue-700  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <svg fill="currentColor" class="w-5 h-5 mr-2" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true">
                     <path clip-rule="evenodd" fill-rule="evenodd"
@@ -213,7 +213,7 @@
                 Cancel
             </a>
             <button wire:click="save()" type="submit"
-                class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs md:text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Simpan
                 <svg aria-hidden="true" class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg">

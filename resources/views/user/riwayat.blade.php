@@ -74,14 +74,14 @@
                                     {{ $item->kode_transaksi }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $tanggal_dibuat }}
+                                    {{ $item->created_at }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $tanggal_mulai }}
+                                    {{ $item->start_at }}
                                 </td>
                                 <td class="px-6 py-4">
                                     @if ($item->status_transaksi == 'Selesai')
-                                        {{ $tanggal_selesai }}
+                                        {{ $item->status_selesai_at }}
                                     @else
                                         {{ $item->status_selesai_at }}
                                     @endif
