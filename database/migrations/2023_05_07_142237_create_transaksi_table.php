@@ -23,8 +23,7 @@ return new class extends Migration
             $table->enum('status_transaksi', ['Menunggu Konfirmasi', 'Diterima', 'Proses', 'Selesai']);
             $table->string('hasil_analisis')->nullable();
             $table->string('sertifikat')->nullable();
-            $table->string('kwitansi')->nullable();
-            $table->dateTime('start_at');
+            $table->date('start_at');
             $table->dateTime('status_diterima_at')->nullable();
             $table->dateTime('status_proses_at')->nullable();
             $table->dateTime('status_selesai_at')->nullable();

@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('keranjang', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');
             $table->unsignedBigInteger('layanan_id');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->enum('wujud_sampel', ['Padat', 'Cair', 'Gas']);
             $table->tinyInteger('jumlah', false, false);
             $table->integer('subtotal', false, false);
+            $table->timestamps();
         });
     }
 

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->enum('wujud_sampel', ['Padat', 'Cair', 'Gas']);
             $table->tinyInteger('jumlah', false, false);
             $table->integer('subtotal', false, false);
+            $table->timestamps();
         });
     }
 
